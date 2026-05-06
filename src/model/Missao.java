@@ -14,7 +14,7 @@ public class Missao {
     private List<Astronauta> astronautas;
 
     public Missao() {
-        this.astronautas = new ArrayList();
+        this.astronautas = new ArrayList<>();
     }
 
     public Missao(int id, String nome, String objetivo, LocalDate dataLancamento, StatusMissao status) {
@@ -23,7 +23,7 @@ public class Missao {
         this.objetivo = objetivo;
         this.dataLancamento = dataLancamento;
         this.status = status;
-        this.astronautas = new ArrayList();
+        this.astronautas = new ArrayList<>();
     }
 
     public int getId() {
