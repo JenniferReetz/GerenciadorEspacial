@@ -3,8 +3,8 @@ package model;
 import java.time.LocalDate;
 
 public class MissaoResgate extends Missao {
-    private int numeroPessoasResgatar;
-    private boolean emergencia;
+    private final int numeroPessoasResgatar;
+    private final boolean emergencia;
 
     public MissaoResgate(int id, String nome, String objetivo,
                          LocalDate dataLancamento, StatusMissao status,
@@ -16,12 +16,12 @@ public class MissaoResgate extends Missao {
 
     public MissaoResgate(int id, String nome, String objetivo,
                          LocalDate dataLancamento, StatusMissao status) {
-        this(id, nome, objetivo, dataLancamento, status, 1, false);
+        this(id, nome, objetivo, dataLancamento, status, 0, false);
     }
 
     @Override
     public String executar() {
-        String nivel = emergencia ? "URGENTE" : "⚠️ NORMAL";
+        String nivel = emergencia ? "URGENTE" : " NORMAL";
         return nivel + " [RESGATE] Resgatando " + numeroPessoasResgatar +
                 " pessoa(s) na missão: " + getNome();
     }

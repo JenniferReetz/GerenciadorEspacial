@@ -3,8 +3,8 @@ package model;
 import java.time.LocalDate;
 
 public class MissaoExploracao extends Missao {
-    private String tipoTerreno;
-    private int duracaoDias;
+    private final String tipoTerreno;
+    private final int duracaoDias;
 
     public MissaoExploracao(int id, String nome, String objetivo,
                             LocalDate dataLancamento, StatusMissao status,
@@ -16,12 +16,12 @@ public class MissaoExploracao extends Missao {
 
     public MissaoExploracao(int id, String nome, String objetivo,
                             LocalDate dataLancamento, StatusMissao status) {
-        this(id, nome, objetivo, dataLancamento, status, "Desconhecido", 30);
+        this(id, nome, objetivo, dataLancamento, status, "Desconhecido", 0);
     }
 
     @Override
     public String executar() {
-        return "🔬 [EXPLORAÇÃO] Coletando dados científicos no terreno " +
+        return "[EXPLORAÇÃO] Coletando dados científicos no terreno " +
                 tipoTerreno + " na missão: " + getNome() +
                 " (Duração: " + duracaoDias + " dias)";
     }
@@ -29,12 +29,4 @@ public class MissaoExploracao extends Missao {
     public String getTipo() {
         return "Exploração";
     }
-    public String getTipoTerreno() {
-        return tipoTerreno;
-    }
-
-    public int getDuracaoDias() {
-        return duracaoDias;
-    }
-
 }

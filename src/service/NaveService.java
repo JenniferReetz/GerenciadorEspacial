@@ -7,7 +7,7 @@ import java.util.List;
 import model.Nave;
 
 public class NaveService {
-    private static final List<Nave> naves = new ArrayList();
+    private static final List<Nave> naves = new ArrayList<>();
     private static int proximoId = 1;
 
     public NaveService() {

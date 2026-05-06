@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 import model.Astronauta;
 import model.Missao;
 import model.Nave;
@@ -17,9 +18,9 @@ import service.MissaoService;
 import service.NaveService;
 
 public class GerenciadorExploracaoEspacial {
-    private static List<Missao> missoes = new ArrayList();
-    private static List<Nave> naves = new ArrayList();
-    private static List<Astronauta> astronautas = new ArrayList();
+    private static List<Missao> missoes = new ArrayList<>();
+    private static List<Nave> naves = new ArrayList<>();
+    private static List<Astronauta> astronautas = new ArrayList<>();
     private static int proximoIdMissao = 1;
     private static int proximoIdNave = 1;
     private static int proximoIdAstronauta = 1;
@@ -29,8 +30,11 @@ public class GerenciadorExploracaoEspacial {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        MissaoService.adicionarMissao("padrao","Missão Marte", "Explorar a superfície de Marte", LocalDate.of(2025, 1, 15), StatusMissao.PLANEJADA);
-        NaveService.adicionarNave("Discovery One", "Exploração", (double)5.0F);
+
+        MissaoService.adicionarMissao("padrao", "Missão Marte", "Explorar a superfície de Marte",
+                LocalDate.of(2025, 1, 15), StatusMissao.PLANEJADA);
+
+        NaveService.adicionarNave("Discovery One", "Exploração", (double) 5.0F);
         AstronautaService.adicionarAstronauta("Neil Armstrong", "Comandante");
         AstronautaService.adicionarAstronauta("Buzz Aldrin", "Piloto");
 
@@ -54,7 +58,7 @@ public class GerenciadorExploracaoEspacial {
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
 
-            while(!scanner.hasNextInt()) {
+            while (!scanner.hasNextInt()) {
                 System.out.println("Por favor, digite um número.");
                 scanner.next();
             }
@@ -86,7 +90,7 @@ public class GerenciadorExploracaoEspacial {
                         if (statusMissao == null) {
                             System.out.println("Missão não criada devido a status inválido.");
                         } else {
-                            MissaoService.adicionarMissao(tipo,nomeMissao, objetivoMissao, dataLancamento, statusMissao);
+                            MissaoService.adicionarMissao(tipo, nomeMissao, objetivoMissao, dataLancamento, statusMissao);
                         }
                     }
                     break;
@@ -173,7 +177,7 @@ public class GerenciadorExploracaoEspacial {
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
             }
-        } while(opcao != 0);
+        } while (opcao != 0);
 
         scanner.close();
     }

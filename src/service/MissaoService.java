@@ -111,19 +111,4 @@ public class MissaoService {
         // Implementação será feita posteriormente conforme orientação do professor
         System.out.println("[Teste 1] Método executado com sucesso!");
     }
-
-    public static void demonstrarPolimorfismo() {
-        System.out.println("\n--- Demonstração de Polimorfismo ---");
-        List<Missao> lista = new ArrayList<>();
-        lista.add(new MissaoExploracao(99, "Explorar Lua", "Coletar rochas",
-                LocalDate.now(), StatusMissao.PLANEJADA, "Rochoso", 45));
-        lista.add(new MissaoResgate(100, "Resgate Órbita", "Reparar satélite",
-                LocalDate.now(), StatusMissao.EM_ANDAMENTO, 3, true));
-        lista.add(new Missao(101, "Missão Padrão", "Teste",
-                LocalDate.now(), StatusMissao.CONCLUIDA));
-
-        for (Missao m : lista) {
-            System.out.println(m.executar()); // Chama a implementação correta de cada tipo!
-        }
-    }
 }
