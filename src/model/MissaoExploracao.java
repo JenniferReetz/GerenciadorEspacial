@@ -14,7 +14,6 @@ public class MissaoExploracao extends Missao {
         this.duracaoDias = duracaoDias;
     }
 
-    // Construtor simplificado (compatível com seu código atual)
     public MissaoExploracao(int id, String nome, String objetivo,
                             LocalDate dataLancamento, StatusMissao status) {
         this(id, nome, objetivo, dataLancamento, status, "Desconhecido", 30);
@@ -26,7 +25,10 @@ public class MissaoExploracao extends Missao {
                 tipoTerreno + " na missão: " + getNome() +
                 " (Duração: " + duracaoDias + " dias)";
     }
-
+    @Override
+    public String getTipo() {
+        return "Exploração";
+    }
     public String getTipoTerreno() {
         return tipoTerreno;
     }

@@ -29,7 +29,7 @@ public class GerenciadorExploracaoEspacial {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        MissaoService.adicionarMissao("Missão Marte", "Explorar a superfície de Marte", LocalDate.of(2025, 1, 15), StatusMissao.PLANEJADA);
+        MissaoService.adicionarMissao("padrao","Missão Marte", "Explorar a superfície de Marte", LocalDate.of(2025, 1, 15), StatusMissao.PLANEJADA);
         NaveService.adicionarNave("Discovery One", "Exploração", (double)5.0F);
         AstronautaService.adicionarAstronauta("Neil Armstrong", "Comandante");
         AstronautaService.adicionarAstronauta("Buzz Aldrin", "Piloto");
@@ -72,6 +72,12 @@ public class GerenciadorExploracaoEspacial {
                     String objetivoMissao = scanner.nextLine();
                     System.out.print("Data de Lançamento (AAAA-MM-DD): ");
                     LocalDate dataLancamento = ConversorService.converterData(scanner.nextLine());
+                    System.out.print("Tipo (padrao/exploracao/resgate): ");
+                    String tipo = ConversorService.converterTipoMissao(scanner.nextLine());
+                    if (tipo == null) {
+                        System.out.println("Missão não criada devido a tipo inválido.");
+                        break;
+                    }
                     if (dataLancamento == null) {
                         System.out.println("Missão não criada.");
                     } else {
@@ -80,7 +86,7 @@ public class GerenciadorExploracaoEspacial {
                         if (statusMissao == null) {
                             System.out.println("Missão não criada devido a status inválido.");
                         } else {
-                            MissaoService.adicionarMissao(nomeMissao, objetivoMissao, dataLancamento, statusMissao);
+                            MissaoService.adicionarMissao(tipo,nomeMissao, objetivoMissao, dataLancamento, statusMissao);
                         }
                     }
                     break;
@@ -163,13 +169,6 @@ public class GerenciadorExploracaoEspacial {
                     } else {
                         System.out.println("Status inválido.");
                     }
-                    break;
-                case 13:
-                    System.out.println("\n--- Executando Teste 1 ---");
-                    MissaoService.executarTeste1();
-                    break;
-                case 14:
-                    MissaoService.demonstrarPolimorfismo();
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");

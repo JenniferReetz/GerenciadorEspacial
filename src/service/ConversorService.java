@@ -30,7 +30,26 @@ public class ConversorService {
             }
         }
     }
+    public static String converterTipoMissao(String input) {
+        if (input == null) return null;
 
+        switch (input.trim().toLowerCase()) {
+            case "padrao":
+            case "padrão":
+                return "padrao";
+
+            case "exploracao":
+            case "exploração":
+                return "exploracao";
+
+            case "resgate":
+                return "resgate";
+
+            default:
+                System.out.println("Use: padrao, exploracao ou resgate.");
+                return null;
+        }
+    }
     public static LocalDate converterData(String input) {
         try {
             return LocalDate.parse(input);

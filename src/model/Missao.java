@@ -58,6 +58,9 @@ public class Missao {
         this.dataLancamento = data;
     }
 
+    public String getTipo() {
+        return "Padrão";
+    }
     public StatusMissao getStatus() {
         return this.status;
     }

@@ -14,9 +14,15 @@ public class MissaoService {
     private static final List<Missao> missoes = new ArrayList<>();
     private static int proximoId = 1;
 
-    public static void adicionarMissao(String nome, String objetivo,
-                                       LocalDate data, StatusMissao status) {
-        Missao m = new Missao(proximoId++, nome, objetivo, data, status);
+    public static void adicionarMissao(String tipo, String nome, String objetivo, LocalDate data, StatusMissao status) {
+
+//        Missao m = new Missao(proximoId++, nome, objetivo, data, status);
+        Missao m = switch (tipo.toLowerCase()) {
+            case "exploracao" -> new MissaoExploracao(proximoId++, nome, objetivo, data, status);
+            case "resgate" -> new MissaoResgate(proximoId++, nome, objetivo, data, status);
+            default -> new Missao(proximoId++, nome, objetivo, data, status);
+        };
+
         missoes.add(m);
         System.out.println("Missão adicionada!");
     }
@@ -34,6 +40,7 @@ public class MissaoService {
                     lista.stream().map(Astronauta::getNome).reduce((a,b) -> a + ", " + b).orElse("N/A");
 
             System.out.println("ID: " + m.getId() + " | Nome: " + m.getNome() +
+                    " | Tipo: " + m.getTipo() +
                     " | Status: " + m.getStatus() + " | Nave: " + nave +
                     " | Astronautas: " + astronautas);
             System.out.println("-----------------------------------");

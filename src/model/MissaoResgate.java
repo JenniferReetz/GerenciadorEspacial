@@ -25,7 +25,10 @@ public class MissaoResgate extends Missao {
         return nivel + " [RESGATE] Resgatando " + numeroPessoasResgatar +
                 " pessoa(s) na missão: " + getNome();
     }
-
+    @Override
+    public String getTipo() {
+        return "Resgate";
+    }
     public int getNumeroPessoasResgatar() {
         return numeroPessoasResgatar;
     }
